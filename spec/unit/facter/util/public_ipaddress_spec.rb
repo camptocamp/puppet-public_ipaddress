@@ -35,7 +35,7 @@ describe Facter::Util::PublicIpaddress do
   describe Facter::Util::PublicIpaddress.update_cache('1.2.3.4') do
     it 'should write value to file' do
       File.expects(:open).with('/var/tmp/public_ip.fact.cache', 'w')
-      #File.any_instance.expects(:write).with('1.2.3.4')
+      #File.any_instance.expects(:write).with('1.2.3.4') # why not?
       Facter::Util::PublicIpaddress.update_cache('1.2.3.4')
     end
   end
