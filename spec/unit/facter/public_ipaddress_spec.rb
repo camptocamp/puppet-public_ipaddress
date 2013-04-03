@@ -16,12 +16,11 @@ describe 'public_ipaddress fact' do
   end
 
   context 'when getting value from ident.me' do
-    it 'should return value and cache it' do
+    it 'should return value' do
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://ident.me').returns('2.3.4.5')
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://icanhazip.com').never
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://checkip.dyndns.org').never
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://ifconfig.me/ip').never
-      #Facter::Util::PublicIpaddress.expects(:update_cache).with('2.3.4.5') # Doesn't seem to be called?
       Facter.value(:public_ipaddress) == '2.3.4.5'
     end
   end

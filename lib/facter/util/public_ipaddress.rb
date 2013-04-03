@@ -20,7 +20,7 @@ module Facter::Util::PublicIpaddress
       response = open(url).read
       value = html ? response[/.*: ([^<]+)<.*/, 1] : response
       return unless value =~ /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
-      update_cache(value) if value
+      update_cache(value)
       value
     end
   end
