@@ -4,6 +4,20 @@
 
 This module is provided by [Camptocamp](http://www.camptocamp.com/)
 
+It uses several public backends (as fallbacks) to retrieve this information, by order of preference:
+
+* http://ident.me
+* http://icanhazip.com
+* http://checkip.dyndns.org
+* http://ifconfig.me/ip
+* cache file
+
+When all backends fail, the cache file is used.
+
+## Usage
+
+This module provides a `public_ipaddress` fact for Facter. In order to deploy this fact, simply add this module to your Puppet module path and make sure `pluginsync` is activated.
+
 ## Contributing
 
 Please report bugs and feature request using [GitHub issue
