@@ -19,13 +19,13 @@ module Facter::Util::PublicIpaddress
     if can_connect?(url, wait_sec=wait_sec)
       response = open(url).read
       value = html ? response[/.*: ([^<]+)<.*/, 1] : response
-      return unless response =~ /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
+      return unless value =~ /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
       update_cache(value) if value
       value
     end
   end
   
-  def self.update_cache (value)
+  def self.update_cache(value)
     if value
       File.open(cache, 'w') do |f|
         f.write(value)
