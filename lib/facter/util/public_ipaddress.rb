@@ -16,7 +16,7 @@ module Facter::Util::PublicIpaddress
   end
   
   def self.get_ip (url, wait_sec=2, html=false)
-    if can_connect? wait_sec=wait_sec, url=url
+    if can_connect?(url, wait_sec=wait_sec)
       response = open(url).read
       value = html ? response[/.*: ([^<]+)<.*/, 1] : response
       return unless response =~ /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
