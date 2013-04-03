@@ -26,10 +26,8 @@ module Facter::Util::PublicIpaddress
   end
   
   def self.update_cache(value)
-    if value
-      File.open(cache, 'w') do |f|
-        f.write(value)
-      end
+    File.open(cache, 'w') do |f|
+      f.write(value)
     end
   end
   
