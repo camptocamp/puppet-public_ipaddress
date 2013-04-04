@@ -20,7 +20,7 @@ describe Facter::Util::PublicIpaddress do
     end
 
     it 'should return true if connect succeeds' do
-      openuri.stubs(:open).with('http://example.com').returns('abc')
+      openuri.stubs(:open_uri).returns('abc')
       Facter::Util::PublicIpaddress.can_connect?('http://example.com').should == true
     end
   end
