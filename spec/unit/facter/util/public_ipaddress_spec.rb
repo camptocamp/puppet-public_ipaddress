@@ -13,22 +13,22 @@ describe Facter::Util::PublicIpaddress do
     end
   end
 
-  describe Facter::Util::PublicIpaddress.can_connect?('http://example.com') do
+  describe Facter::Util::PublicIpaddress.can_connect?('http://invalid.domain.tld') do
     it 'should return false if request times out' do
       Timeout.expects(:timeout).raises(Timeout::Error)
-      Facter::Util::PublicIpaddress.can_connect?('http://example.com').should == false
+      Facter::Util::PublicIpaddress.can_connect?('http://invalid.domain.tld').should == false
     end
 
     it 'should return true if connect succeeds' do
-      openuri.stubs(:open).with('http://example.com').returns('abc')
-      Facter::Util::PublicIpaddress.can_connect?('http://example.com').should == true
+      openuri.stubs(:open_uri).returns('abc')
+      Facter::Util::PublicIpaddress.can_connect?('http://invalid.domain.tld').should == true
     end
   end
 
-  describe Facter::Util::PublicIpaddress.get_ip('http://example.com') do
+  describe Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld') do
     it 'should return nil if connection fails' do
       Facter::Util::PublicIpaddress.expects(:can_connect?).returns(false)
-      Facter::Util::PublicIpaddress.get_ip('http://example.com').should be_nil
+      Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should be_nil
     end
 
     # Find a way to stub Kernel#open for other tests:
