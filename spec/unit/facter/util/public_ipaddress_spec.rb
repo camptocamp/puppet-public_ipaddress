@@ -2,6 +2,11 @@ require 'spec_helper'
 require 'facter/util/public_ipaddress'
 
 describe Facter::Util::PublicIpaddress do
+
+  let (:openuri) do
+    OpenURI
+  end
+
   describe Facter::Util::PublicIpaddress.cache do
     it 'should return cache file path' do
       Facter::Util::PublicIpaddress.cache.should == '/var/tmp/public_ip.fact.cache'
@@ -15,9 +20,8 @@ describe Facter::Util::PublicIpaddress do
     end
 
     it 'should return true if connect succeeds' do
-      # Find a way to stub Kernel#open
-      #Kernel.expects(:open).with('http://example.com').returns('abc')
-      #Facter::Util::PublicIpaddress.can_connect?('http://example.com').should == true
+      openuri.stubs(:open).with('http://example.com').returns('abc')
+      Facter::Util::PublicIpaddress.can_connect?('http://example.com').should == true
     end
   end
 
