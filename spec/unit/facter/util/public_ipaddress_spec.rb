@@ -22,6 +22,7 @@ describe Facter::Util::PublicIpaddress do
     it 'should return true if connect succeeds' do
       tmpfile = Tempfile.new('connect')
       tmpfile.write('abc')
+      tmpfile.rewind
       openuri.stubs(:open_uri).returns(tmpfile)
       Facter::Util::PublicIpaddress.can_connect?('http://invalid.domain.tld').should == true
     end
@@ -36,6 +37,7 @@ describe Facter::Util::PublicIpaddress do
     it 'should return nil if the backend returns a wrong value' do
       tmpfile = Tempfile.new('get_ip_wrong')
       tmpfile.write('abc')
+      tmpfile.rewind
       openuri.stubs(:open_uri).returns(tmpfile)
       Facter::Util::PublicIpaddress.expects(:update_cache).never
       Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should be_nil
@@ -44,6 +46,7 @@ describe Facter::Util::PublicIpaddress do
     it 'should return value and cache it' do
       tmpfile = Tempfile.new('get_ip_right')
       tmpfile.write('5.4.3.2')
+      tmpfile.rewind
       openuri.stubs(:open_uri).returns(tmpfile)
       Facter::Util::PublicIpaddress.expects(:update_cache).with('5.4.3.2').once
       Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should == '5.4.3.2'
