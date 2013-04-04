@@ -20,7 +20,9 @@ describe Facter::Util::PublicIpaddress do
     end
 
     it 'should return true if connect succeeds' do
-      openuri.stubs(:open_uri).returns('abc')
+      tmpfile = Tempfile.new('connect')
+      tmpfile.write('abc')
+      openuri.stubs(:open_uri).returns(tmpfile)
       Facter::Util::PublicIpaddress.can_connect?('http://invalid.domain.tld').should == true
     end
   end
@@ -31,9 +33,21 @@ describe Facter::Util::PublicIpaddress do
       Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should be_nil
     end
 
-    # Find a way to stub Kernel#open for other tests:
-    #  - test wrong value returned by site
-    #  - test update_cache is called
+    it 'should return nil if the backend returns a wrong value' do
+      tmpfile = Tempfile.new('get_ip_wrong')
+      tmpfile.write('abc')
+      openuri.stubs(:open_uri).returns(tmpfile)
+      Facter::Util::PublicIpaddress.expects(:update_cache).never
+      Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should be_nil
+    end
+
+    it 'should return value and cache it' do
+      tmpfile = Tempfile.new('get_ip_right')
+      tmpfile.write('5.4.3.2')
+      openuri.stubs(:open_uri).returns(tmpfile)
+      Facter::Util::PublicIpaddress.expects(:update_cache).with('5.4.3.2').once
+      Facter::Util::PublicIpaddress.get_ip('http://invalid.domain.tld').should == '5.4.3.2'
+    end
   end
 
   describe Facter::Util::PublicIpaddress.update_cache('1.2.3.4') do
