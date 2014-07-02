@@ -11,7 +11,7 @@ describe 'public_ipaddress fact' do
       Facter::Util::PublicIpaddress.stubs(:get_ip).returns(nil)
       File.expects(:exists?).with('/var/tmp/public_ip.fact.cache').returns(true)
       File.expects(:read).with('/var/tmp/public_ip.fact.cache').returns('1.2.3.4')
-      Facter.value(:public_ipaddress) == '1.2.3.4'
+      Facter.value(:public_ipaddress).should == '1.2.3.4'
     end
   end
 
@@ -21,7 +21,7 @@ describe 'public_ipaddress fact' do
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://icanhazip.com').never
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://checkip.dyndns.org').never
       Facter::Util::PublicIpaddress.expects(:get_ip).with('http://ifconfig.me/ip').never
-      Facter.value(:public_ipaddress) == '2.3.4.5'
+      Facter.value(:public_ipaddress).should == '2.3.4.5'
     end
   end
 

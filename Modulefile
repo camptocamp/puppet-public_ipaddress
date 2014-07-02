@@ -1,5 +1,5 @@
 name         'camptocamp-public_ipaddress'
-version      '0.0.1'
+version      '1.0.0'
 source       'https://github.com/camptocamp/puppet-public_ipaddress'
 author       'camptocamp'
 author       'DevOps Team / Camptocamp'
