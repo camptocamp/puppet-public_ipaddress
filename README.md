@@ -1,5 +1,8 @@
 # Public IPaddress module for Puppet
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/camptocamp/public_ipaddress.svg)](https://forge.puppetlabs.com/camptocamp/public_ipaddress)
+[![Build Status](https://travis-ci.org/camptocamp/puppet-public_ipaddress.png?branch=master)](https://travis-ci.org/camptocamp/puppet-public_ipaddress)
+
 **Provides a public_ipaddress fact for Facter.**
 
 This module is provided by [Camptocamp](http://www.camptocamp.com/)
