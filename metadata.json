@@ -23,9 +23,6 @@
     "Gemfile.lock": "cd5a6f26d62f2795a583a6d69653c421",
     "Rakefile": "09f508de780bbe3d22ad12ff4a4736d4"
   },
-  "types": [
-
-  ],
   "project_page": "https://github.com/camptocamp/puppet-public_ipaddress",
   "name": "camptocamp-public_ipaddress",
   "license": "GNU GPLv3"
