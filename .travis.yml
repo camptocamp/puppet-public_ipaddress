@@ -11,13 +11,18 @@ matrix:
     env: PUPPET_GEM_VERSION="~> 3.0"
   - rvm: 2.0.0
     env: PUPPET_GEM_VERSION="~> 3.0"
+  - rvm: 2.0.0
+    env: PUPPET_GEM_VERSION="~> 3.0" PUPPET_PARSER="future"
+  allow_failures:
+    - rvm: 2.0.0
+      env: PUPPET_GEM_VERSION="~> 3.0" PUPPET_PARSER="future"
 notifications:
   email: false
 deploy:
   provider: puppetforge
   user: camptocamp
   password:
-    secure: "XAv4O363tng0KuRnu1ZhhwORy+2CF9UQwdwlFmS+NG9jOaTZZN+PMK8iC7OSIvZN6cfKlYjHRHNuxFBnYlnMrLsM9fVxt4NjjznOgIKQpQDleWk4UitZj5ntyHmUtYtofUd5Bhi/sdYXwGN9pVRCrcfFBmsIRq/dOhXD7Wy5KcQ="
+    secure: "SBNj/H3tcKUadp3Qh1omehRvfy5ZmRTlGuQetBDfmK5rkUz8PhgLdBAT3CyMzkb+TZ5BfXZzBm6/oqJyyAYz7fowSWJkCCpgA7lu9Nnm+DEQGfkYUgGQgayMLN/u1PZUFFy9ksGvLKHc5QFLvKqAwWzPZh7YCfbUS1L/qh8/K3U="
   on:
     tags: true
     # all_branches is required to use tags
