@@ -6,7 +6,7 @@
   "summary": "Camptocamp Public_Ipaddress Module",
   "source": "https://github.com/camptocamp/puppet-public_ipaddress",
   "description": "Public Ipaddress Module for Puppet",
-  "author": "DevOps Team / Camptocamp",
+  "author": "Camptocamp",
   "checksums": {
     "spec/unit/facter/public_ipaddress_spec.rb": "9b0aaca2fda0ba71d2adabe84e7d0d95",
     "README.md": "42def773649359c3dc5ab14b26d80410",
@@ -25,5 +25,5 @@
   },
   "project_page": "https://github.com/camptocamp/puppet-public_ipaddress",
   "name": "camptocamp-public_ipaddress",
-  "license": "GNU GPLv3"
+  "license": "Apache-2.0"
 }
