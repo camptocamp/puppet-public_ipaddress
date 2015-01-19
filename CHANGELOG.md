@@ -1,3 +1,7 @@
+## 2015-01-19 - Release 1.1.5
+
+- Add puppet-lint plugins
+
 ## 2014-11-19 - Release 1.1.2
 
 - Fix forge password
