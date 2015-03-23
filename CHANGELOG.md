@@ -1,3 +1,8 @@
+## 2015-03-23 - Release 1.1.6
+
+- Various spec improvements
+- metadata.json improvements
+
 ## 2015-01-19 - Release 1.1.5
 
 - Add puppet-lint plugins
