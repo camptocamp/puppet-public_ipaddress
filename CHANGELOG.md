@@ -1,3 +1,7 @@
+## 2015-03-24 - Release 1.1.7
+
+- Update Gemfile
+
 ## 2015-03-23 - Release 1.1.6
 
 - Various spec improvements
