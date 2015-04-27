@@ -1,6 +1,6 @@
 {
   "name": "camptocamp-public_ipaddress",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "author": "Camptocamp",
   "license": "Apache-2.0",
   "summary": "Camptocamp Public_Ipaddress Module",
@@ -8,6 +8,7 @@
   "description": "Public Ipaddress Module for Puppet",
   "project_page": "https://github.com/camptocamp/puppet-public_ipaddress",
   "dependencies": [
+
   ],
   "operatingsystem_support": [
     {
