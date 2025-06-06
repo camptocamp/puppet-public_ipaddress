@@ -7,7 +7,7 @@ module Facter::Util::PublicIpaddress
   end
   
   def self.can_connect? (url, wait_sec=2)
-    Timeout::timeout(wait_sec) { open(url) }
+    Timeout::timeout(wait_sec) { URI.open(url) }
     return true
     rescue Timeout::Error
       return false
@@ -17,7 +17,7 @@ module Facter::Util::PublicIpaddress
   
   def self.get_ip (url, wait_sec=2, html=false)
     if can_connect?(url, wait_sec=wait_sec)
-      response = open(url).read
+      response = URI.open(url).read
       value = html ? response[/.*: ([^<]+)<.*/, 1] : response
       return unless value =~ /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
       update_cache(value)
