@@ -1,3 +1,7 @@
+## 2025-06-06 - Release 1.1.18
+
+Fix deprecation warning on Kernel#open
+
 ## 2015-08-21 - Release 1.1.17
 
 Use docker for acceptance tests
